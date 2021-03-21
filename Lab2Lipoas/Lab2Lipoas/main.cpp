@@ -6,13 +6,12 @@ using namespace sf;
 
 int HEIGHT = 900;
 int WIDTH = 900;
-int sizeCellX = 40;
-int sizeCellY = 40;
-int heightPoint = 20;
 const int BOTVALUE = 5;
 const int TOPVALUE = 50;
 const int StandartSpeed = 100;
 
+enum RuleInput { Conway = 1, KeyboardInput, FileInput };
+rule showRules();
 rule tuneRules();
 std::vector<int> fillRule(std::string);
 
@@ -74,7 +73,7 @@ int main()
 				continue;
 			}
 		}
-		rule rules = tuneRules();
+		rule rules = showRules();
 		monitor mon(HEIGHT, WIDTH, countX, countY, rules, StandartSpeed, fillPart);
 		mon.show();
 
@@ -99,30 +98,76 @@ int main()
 	return 0;
 }
 
-
+rule showRules() 
+{
+	rule rules = tuneRules();
+	if (rules.born.size() > 0&&rules.survive.size()>0)
+	{
+		Console::Write("Конечное условие рождения по количеству соседей выглядит так:");
+		Console::Write(to_string(rules.born[0]));
+		for (int i = 1; i < rules.born.size(); i++)
+		{
+			Console::Write(", " + to_string(rules.born[i]));
+		}
+		Console::WriteLine("");
+		Console::Write("Конечное условие выживания по количеству соседей выглядит так:");
+		Console::Write(to_string(rules.survive[0]));
+		for (int i = 1; i < rules.survive.size(); i++)
+		{
+			Console::Write(", " + to_string(rules.survive[i]));
+		}
+		Console::WriteLine("");
+	}
+	return rules;
+}
 
 rule tuneRules()
 {
 	for (;;)
 	{
-		Console::WriteLine("Вы хотите сыграть по стандартным правилам?");
-		Console::WriteLine("3 соседа - клетка появляется.");
-		Console::WriteLine("2,3 соседа - клетка выживает.");
-		Console::WriteLine("0,1,4,5,6,7,8 соседей - клетка умирает.");
-		Console::WriteLine("1 - Да. 2 - Нет.");
+		Console::WriteLine("По каким правилам вы хотите сыграть?");
+		Console::WriteLine("1 - Стандартныее правила Conway Game. 2 - Ввести правила вручную с клавиатуры. 3 - Загрузить правила из файла.");
 		int userChoice = Console::GetDigit();
 		std::vector<int> ruleBorn;
 		std::vector<int> ruleSurvive;
 		std::vector<int> ruleDie;
+		rule rules;
 		switch (userChoice)
 		{
-		case Yes:
+		case Conway:
 			return rule();
-		case No:
+		case KeyboardInput:
 			ruleBorn = fillRule("рождения");
 			ruleSurvive = fillRule("выживания");
-			ruleDie = fillRule("смерти");
-			return rule(ruleBorn, ruleSurvive, ruleDie);
+			rules = rule(ruleBorn, ruleSurvive);
+			for (;;)
+			{
+				Console::WriteLine("Вы хотите сохранить свои правила?");
+				Console::WriteLine("1 - Да. 2 - Нет.");
+				int userChoiceSave = Console::GetDigit();
+				switch (userChoiceSave)
+				{
+				case Yes:File::saveRules(rules); break;
+				case No:
+					break;
+				default:
+					Console::WriteLine("Данного пункта меню не существует. Повторите ввод.");
+					continue;
+				}
+				break;
+			}
+			return rules;
+		case FileInput:
+			try
+			{
+				return File::loadRules();
+			}
+			catch (invalid_argument ex)
+			{
+				Console::WriteLine(ex.what());
+				Console::WriteLine("Повторите ввод");
+				continue;
+			}
 		default:
 			Console::WriteLine("Данного пункта меню не существует. Повторите ввод.");
 			continue;
@@ -137,7 +182,7 @@ std::vector<int> fillRule(std::string mod)
 	{
 		Console::WriteLine("Введите количество условий " + mod + ".0-9");
 		int bornCountRules = Console::GetDigit();
-		if (!logic::checkBorder(bornCountRules, 0, 9))
+		if (!logic::checkBorder(bornCountRules, lowBoardNeighbour, maxBoardNeighbour+1))
 		{
 			Console::WriteLine("Число не соответствует границе. Повторите ввод.");
 			continue;
@@ -147,7 +192,7 @@ std::vector<int> fillRule(std::string mod)
 		{
 			Console::WriteLine("Введите количество соседей для " + to_string(i+1) + " условия " + mod + ".");
 			int RuleValue = Console::GetDigit();
-			if (!logic::checkBorder(RuleValue, 0, 8))
+			if (!logic::checkBorder(RuleValue, lowBoardNeighbour, maxBoardNeighbour))
 			{
 				Console::WriteLine("Число не соответствует границе. Повторите ввод.");
 				i--;
@@ -172,16 +217,6 @@ std::vector<int> fillRule(std::string mod)
 			{
 				ruleVec.push_back(RuleValue);
 			}
-		}
-		if (ruleVec.size() > 0)
-		{
-			Console::Write("Конечное условие " + mod + " по количеству соседей выглядит так:");
-			Console::Write(to_string(ruleVec[0]));
-			for (int i = 1; i < ruleVec.size(); i++)
-			{
-				Console::Write(", " + to_string(ruleVec[i]));
-			}
-			Console::WriteLine("");
 		}
 		return ruleVec;
 	}

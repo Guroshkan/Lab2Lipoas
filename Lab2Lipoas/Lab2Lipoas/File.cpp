@@ -101,6 +101,81 @@ grid File::loadMatrix()
 	return loadedMatrix;
 }
 
+void File::saveRules(rule rules)
+{
+	Console::WriteLine("Вы хотите сохранить правила в файл.");
+	std::string filePath = getCorrectPath(Write);
+	std::ofstream f;
+	f.open(filePath);
+	for (int i = 0; i < rules.born.size();i++)
+	{
+		f << to_string(rules.born[i]) + ' ';
+	}
+	f << '\n';
+	for (int i = 0; i < rules.survive.size(); i++)
+	{
+		f << to_string(rules.survive[i]) + ' ';
+	}
+	f << '\0';
+	f.close();
+}
+
+rule File::loadRules()
+{
+	Console::WriteLine("Вы хотите загрузить правила из файла.");
+	std::string filePath = getCorrectPath(Read);
+	std::string line = getMessage(filePath);
+	std::vector<std::string> lineVec = split(line, '\n');
+	if(lineVec.size()!=2)
+		throw invalid_argument("Неверное содержание файла. Ожидается 2 строки.");
+	std::vector<int> valueVecBorn;
+	std::vector<std::string>lineVecBornStr = split(lineVec[0], ' ');
+	if (lineVecBornStr.size() > 10)
+		throw invalid_argument("Неверное содержание файла. Ожидается не больше 9 значений.");
+	for (int i = 0; i < lineVecBornStr.size()-1; i++)
+	{
+		try
+		{
+			for (int j = 0; j < valueVecBorn.size(); j++)
+			{
+				if(to_string(valueVecBorn[j])== lineVecBornStr[i])
+					throw invalid_argument("Неверное содержание файла. Значение параметра повторяется.");
+				if (logic::checkBorder(valueVecBorn[j], lowBoardNeighbour, maxBoardNeighbour))
+					throw invalid_argument("Неверное содержание файла. Значение параметра повторяется.");
+			}
+			valueVecBorn.push_back(std::stoi(lineVecBornStr[i]));
+		}
+		catch (std::invalid_argument ex)
+		{
+			ex.what();
+			throw invalid_argument("Неверное содержание файла. Значение параметра должно быть представлено уникальным числом от 0 до 8.");
+		}
+	}
+	std::vector<int> valueVecSurvive;
+	std::vector<std::string>lineVecSurviveStr = split(lineVec[1], ' ');
+	if (lineVecSurviveStr.size() > 10)
+		throw invalid_argument("Неверное содержание файла. Ожидается не больше 9 значений.");
+	for (int i = 0; i < lineVecSurviveStr.size()-1; i++)
+	{
+		try
+		{
+			for (int j = 0; j < valueVecSurvive.size(); j++)
+			{
+				if (to_string(valueVecSurvive[j]) == lineVecSurviveStr[i])
+					throw invalid_argument("Неверное содержание файла. Значение параметра повторяется.");
+				if (logic::checkBorder(valueVecSurvive[j], lowBoardNeighbour, maxBoardNeighbour))
+					throw invalid_argument("Неверное содержание файла. Значение параметра повторяется.");
+			}
+			valueVecSurvive.push_back(std::stoi(lineVecSurviveStr[i]));
+		}
+		catch (std::invalid_argument ex)
+		{
+			throw invalid_argument("Неверное содержание файла. Значение параметра должно быть представлено уникальным числом от 0 до 8.");
+		}
+	}
+	return rule(valueVecBorn,valueVecSurvive);
+}
+
 std::vector<std::string> File::split(std::string s, char symb)
 {
 	size_t pos_start = 0, pos_end;

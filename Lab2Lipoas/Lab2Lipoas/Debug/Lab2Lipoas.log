@@ -1,4 +1,51 @@
-﻿  main.cpp
-C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\main.cpp(157,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\main.cpp(180,22): warning C4018: <: несоответствие типов со знаком и без знака
+﻿  File.cpp
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(33,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(39,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(60,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(66,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(110,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(115,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(135,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(139,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(150,11): warning C4834: отмена возвращаемого значения функции с атрибутом "nodiscard"
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(158,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(162,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\File.cpp(204,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Logic.cpp
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\Logic.cpp(11,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\Logic.cpp(13,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\Logic.cpp(18,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\Logic.cpp(20,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\Logic.cpp(25,23): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\Logic.cpp(37,23): warning C4018: <: несоответствие типов со знаком и без знака
+  main.cpp
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\main.cpp(108,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\main.cpp(115,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\main.cpp(202,22): warning C4018: <: несоответствие типов со знаком и без знака
+  monitor.cpp
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(115,98): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(115,76): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(116,56): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(116,29): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(153,76): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(153,65): warning C4244: аргумент: преобразование "int" в "T", возможна потеря данных
+          with
+          [
+              T=float
+          ]
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(157,36): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Lab2Lipoas\monitor.cpp(157,24): warning C4244: аргумент: преобразование "int" в "float", возможна потеря данных
+  Создание кода...
   Lab2Lipoas.vcxproj -> C:\Users\acer nitro 5\Desktop\андр\Conway-Game-of-Life-Simulation-master\Lab2Lipoas\Debug\Lab2Lipoas.exe
